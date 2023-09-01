@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
     private var list: ArrayList<Hero> = arrayListOf()
+    private var title: String = "Mode List"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.setHasFixedSize(true)
 
         list.addAll(HeroesData.listData)
+
+        setActionBarTitle(title)
         showRecycleList()
 
 
@@ -49,19 +52,26 @@ class MainActivity : AppCompatActivity() {
     private fun setMode(selectedMode: Int) {
         when (selectedMode) {
             R.id.action_list -> {
+                title = "Mode List"
                 showRecycleList()
             }
             R.id.action_grid -> {
+                title = "Mode Grid"
                 showRecycleGrid()
             }
             R.id.action_cardview -> {
+                title = "Mode CardView"
                 showRecyclerCardView()
             }
         }
+        setActionBarTitle(title)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         setMode(item.itemId)
         return super.onOptionsItemSelected(item)
+    }
+    private fun setActionBarTitle(title: String) {
+        supportActionBar?.title = title
     }
 }

@@ -30,7 +30,7 @@ class CardviewHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.
         val hero = listHero[position]
         Glide.with(holder.itemView.context)
             .load(hero.photo)
-            .apply(RequestOptions().override(55, 55))
+            .apply(RequestOptions().override(150, 250))
             .into(holder.imgPhoto)
 
         holder.tvName.text = hero.name
